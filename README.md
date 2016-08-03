@@ -1,7 +1,7 @@
 # Pertanian
 
 #Script API menu satu
-...php
+
 <?php
 	
 include"koneksi.php";
@@ -39,7 +39,6 @@ echo json_encode($response);
 
 
 #Script API menu detail
-...php
 
 <?php
 	
