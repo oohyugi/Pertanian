@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="vm"
+            type="id.padai.pertanian.LoginVM"/>
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="id.yogi.catatanramadhan.LoginActivity"
+        android:background="@color/colorBackground">
+
+        <LinearLayout
+            android:padding="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:background="@android:color/white">
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/username"
+                android:layout_marginBottom="10dp"
+                android:text="@{vm.bUserName}"
+                app:addTextChangedListener="@{vm.bUserNameWatcher}"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:layout_marginBottom="10dp"
+                android:text="@{vm.bUserPass}"
+                app:addTextChangedListener="@{vm.bUserPassWatcher}"
+            />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinKategori"
+                android:entries="@array/spin_kategori"
+                android:layout_marginBottom="30dp"></Spinner>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{vm.bTextLogin}"
+                android:onClick="@{vm.onCLickLogin}"/>
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No account yet? Create one "
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp"
+                android:onClick="@{vm.onCLickRegister}"/>
+
+        </LinearLayout>
+
+
+
+
+    </RelativeLayout>
+
+</layout>
