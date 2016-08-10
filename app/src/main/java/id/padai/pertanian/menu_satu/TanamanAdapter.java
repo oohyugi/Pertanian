@@ -38,7 +38,7 @@ public class TanamanAdapter extends GitsAdapter<TanamanDao,RowVM,RowMenuSatuBind
     @Override
     public void onRowClick(TanamanDao data, int position) {
 
-        Log.wtf("Data", String.valueOf(data.getId()));
+        Log.wtf("Data", String.valueOf(data.id));
         DetailActivity.startActivity(mContext,data);
     }
 }

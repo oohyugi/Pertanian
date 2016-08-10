@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="vm"
+            type="id.padai.pertanian.menutiga.MenuTigaVM"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:adapter="@{vm.bAdapter}"
+            app:layoutManager="@{vm.bLayoutManager}"
+            tools:listitem="@layout/row_menu_tiga"
+            ></android.support.v7.widget.RecyclerView>
+
+    </RelativeLayout>
+</layout>

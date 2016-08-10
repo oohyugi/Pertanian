@@ -1,9 +1,8 @@
-package id.padai.pertanian.menu_satu;
+package id.padai.pertanian.menutiga;
 
 import android.app.ProgressDialog;
 import android.databinding.BindingAdapter;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.widget.ImageView;
 
@@ -15,18 +14,18 @@ import java.util.List;
 import id.gits.mvvmcore.viewmodel.GitsVM;
 import id.padai.padaiapi.dao.TanamanDao;
 import id.padai.pertanian.R;
-import id.padai.pertanian.databinding.ActivityMenuSatuBinding;
+import id.padai.pertanian.databinding.ActivityMenuTigaBinding;
 
 /**
  * Created by yogi on 09/06/16.
  */
-public class MenuSatuVM extends GitsVM<MenuSatuController,ActivityMenuSatuBinding> {
+public class MenuTigaVM extends GitsVM<MenuTigaController,ActivityMenuTigaBinding> {
     private List<TanamanDao> mList= new ArrayList<>();
-    public TanamanAdapter bAdapter;
+    public MenuTigaAdapter bAdapter;
     public LinearLayoutManager bLayoutManager;
     ProgressDialog  mProgressDialog;
-    public MenuSatuVM(AppCompatActivity activity, MenuSatuController controller,
-                      ActivityMenuSatuBinding binding, List<TanamanDao> mList) {
+    public MenuTigaVM(AppCompatActivity activity, MenuTigaController controller,
+                      ActivityMenuTigaBinding binding, List<TanamanDao> mList) {
         super(activity, controller, binding);
         mActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -36,8 +35,8 @@ public class MenuSatuVM extends GitsVM<MenuSatuController,ActivityMenuSatuBindin
     }
 
     private void initAdapter(List<TanamanDao> mList) {
-        bAdapter= new TanamanAdapter(mList);
-        bLayoutManager= new GridLayoutManager(mActivity,2);
+        bAdapter= new MenuTigaAdapter(mList);
+        bLayoutManager= new LinearLayoutManager(mActivity);
 
     }
     public void refreshAdapter(){

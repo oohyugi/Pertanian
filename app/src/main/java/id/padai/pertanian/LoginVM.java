@@ -1,15 +1,13 @@
 package id.padai.pertanian;
 
+import android.app.ProgressDialog;
 import android.databinding.ObservableField;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import id.gits.mvvmcore.viewmodel.GitsVM;
-import id.padai.padaiapi.dao.LoginDao;
 import id.padai.pertanian.databinding.ActivityLoginBinding;
 import id.padai.pertanian.utils.MyTextWatcher;
 
@@ -17,11 +15,13 @@ import id.padai.pertanian.utils.MyTextWatcher;
  * Created by yogi on 05/06/16.
  */
 public class LoginVM extends GitsVM<LoginController , ActivityLoginBinding> {
-    public String bUserName;
-    public String bUserPass;
+    public String bUserName="";
+    public String bUserPass="";
     public String kategori="admin";
     public ObservableField<String>bTextLogin = new ObservableField<>();
     int statusButton =0;
+
+    ProgressDialog mProgressDialog;
 
     public LoginVM(AppCompatActivity activity, LoginController controller, ActivityLoginBinding binding) {
         super(activity, controller, binding);
@@ -46,24 +46,33 @@ public class LoginVM extends GitsVM<LoginController , ActivityLoginBinding> {
         }*/
     }
 
-    private void checkItemSpinner() {
 
-    }
 
     public void onCLickLogin(View view){
         if (statusButton==0){
-            if (!TextUtils.isEmpty(bUserName) && !TextUtils.isEmpty(bUserPass)
-                    && !TextUtils.isEmpty(kategori) ){
-                //MainActivity.startActivity(mActivity);
-                mController.LoginFireBase(bUserName,bUserPass);
-                mController.callUser(bUserName,bUserPass,kategori);
-                Log.wtf("DATA",bUserName+bUserPass+kategori);
 
-            }else{
-                Toast.makeText(mActivity,"Please Insert username or password",Toast.LENGTH_SHORT).show();
+            boolean isActive = true;
+
+
+            if (TextUtils.isEmpty(bUserName)){
+                isActive=false;
+                mBinding.edUserName.setError("Username tidak boleh kosong");
+
+            }else if (TextUtils.isEmpty(bUserPass)){
+                isActive=false;
+                mBinding.edPassword.setError("Password tidak boleh kosong");
+
             }
+            if (!TextUtils.isEmpty(bUserName) && !TextUtils.isEmpty(bUserPass)){
+                //MainActivity.startActivity(mActivity);
+                isActive=true;
+                mProgressDialog = ProgressDialog.show(mActivity,null, "Silakan tunggu..");
+                mController.callUser(bUserName,bUserPass);
+
+            }
+
         }else{
-            mController.RegisterFireBase(bUserName,bUserPass);
+            mController.Register(bUserName,bUserPass);
         }
 
 
@@ -90,7 +99,7 @@ public class LoginVM extends GitsVM<LoginController , ActivityLoginBinding> {
     };
 
 
-    public void setValue(LoginDao loginDaoBaseDao) {
-        Log.w(App.TAG,loginDaoBaseDao.getId());
+    public void hideDialog() {
+        mProgressDialog.dismiss();
     }
 }

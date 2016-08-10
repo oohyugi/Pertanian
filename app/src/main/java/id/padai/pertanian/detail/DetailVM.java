@@ -18,12 +18,14 @@ import id.padai.pertanian.databinding.ActivityDetailBinding;
 public class DetailVM extends GitsVM<DetailController, ActivityDetailBinding> {
 
 
+    TanamanDao tanamanDao;
     public ObservableField<String>bTextDetail = new ObservableField<>();
     public ObservableField<String>bImgUrl = new ObservableField<>();
     public DetailVM(AppCompatActivity activity, DetailController controller,
                     ActivityDetailBinding binding, TanamanDao tanamanDao) {
         super(activity, controller, binding);
 
+        mActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
     }
@@ -36,8 +38,9 @@ public class DetailVM extends GitsVM<DetailController, ActivityDetailBinding> {
     }
 
 
-    public void setValue(TanamanDao data) {
-        bTextDetail.set(data.getDetail());
-        bImgUrl.set(data.getImage());
+    public void setData(TanamanDao tanamanDao) {
+        mActivity.getSupportActionBar().setTitle(tanamanDao.nama);
+        bTextDetail.set(tanamanDao.detail);
+        bImgUrl.set(tanamanDao.image);
     }
 }

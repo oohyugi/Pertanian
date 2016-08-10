@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class PadaiApi {
 
-    public static final String BASE_URL="http://192.168.43.166/ta_dara/";
+    public static final String BASE_URL="http://10.42.0.1/ta_dara/";
     ApiService apiService;
 
     public PadaiApi(){

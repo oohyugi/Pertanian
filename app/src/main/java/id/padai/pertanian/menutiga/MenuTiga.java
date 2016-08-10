@@ -1,4 +1,4 @@
-package id.padai.pertanian.menu_satu;
+package id.padai.pertanian.menutiga;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,7 +6,7 @@ import android.content.Intent;
 import id.gits.mvvmcore.activity.GitsActivity;
 import id.padai.pertanian.R;
 
-public class MenuSatu extends GitsActivity<MenuSatuController> {
+public class MenuTiga extends GitsActivity<MenuTigaController> {
 
   public static String PARAMS= "status";
 
@@ -17,16 +17,16 @@ public class MenuSatu extends GitsActivity<MenuSatuController> {
 
     @Override
     protected int getResLayout() {
-        return R.layout.activity_menu_satu;
+        return R.layout.activity_menu_tiga;
     }
 
     @Override
-    protected MenuSatuController createController() {
-        return new MenuSatuController();
+    protected MenuTigaController createController() {
+        return new MenuTigaController();
     }
 
     public static void startActivity(Context context,String status){
-        Intent intent = new Intent(context,MenuSatu.class);
+        Intent intent = new Intent(context,MenuTiga.class);
         intent.putExtra(PARAMS,status);
         context.startActivity(intent);
     }

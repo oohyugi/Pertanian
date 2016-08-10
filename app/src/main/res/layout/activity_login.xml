@@ -27,6 +27,7 @@
 
 
             <EditText
+                android:id="@+id/edUserName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/username"
@@ -34,6 +35,7 @@
                 android:text="@{vm.bUserName}"
                 app:addTextChangedListener="@{vm.bUserNameWatcher}"/>
             <EditText
+                android:id="@+id/edPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
@@ -43,12 +45,12 @@
                 app:addTextChangedListener="@{vm.bUserPassWatcher}"
             />
 
-            <Spinner
+           <!-- <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/spinKategori"
                 android:entries="@array/spin_kategori"
-                android:layout_marginBottom="30dp"></Spinner>
+                android:layout_marginBottom="30dp"></Spinner>-->
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -2,7 +2,6 @@ package id.padai.pertanian;
 
 import android.app.Application;
 
-import com.firebase.client.Firebase;
 import com.google.gson.Gson;
 
 import id.padai.padaiapi.core.PadaiApi;
@@ -11,15 +10,13 @@ import id.padai.padaiapi.core.PadaiApi;
  * Created by yogi on 05/06/16.
  */
 public class App extends Application {
-    static PadaiApi padaiApi = new PadaiApi();
-    static Gson sGson = new Gson();
+    public static PadaiApi padaiApi = new PadaiApi();
+    public static Gson gson = new Gson();
     static String TAG="Result";
 
     @Override
     public void onCreate() {
         super.onCreate();
-        Firebase.setAndroidContext(this);
-
     }
 
     public static PadaiApi getApi() {
@@ -27,7 +24,7 @@ public class App extends Application {
     }
 
     public static Gson getGson() {
-        return sGson;
+        return gson;
     }
 
 }

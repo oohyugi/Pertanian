@@ -20,14 +20,24 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("login.php")
     Observable<BaseDao<LoginDao>> postLogin(@Field("username") String username,
-                                                  @Field("password") String password,
-                                                  @Field("kategori") String kategori);
+                                                  @Field("password") String password
+    );
 
-    @GET("menusatu.php")
-    Observable<List<TanamanDao>> getTanaman();
+    @GET("get_data.php")
+    Observable<BaseDao<List<TanamanDao>>> getTanaman(@Query("status") String status);
 
-    @GET("menusatu_detail.php")
-    Observable<BaseDao<TanamanDao>> getDetailTanaman(@Query("id") String id);
+    @GET("get_kendali_hama_cabe.php")
+    Observable<List<TanamanDao>> getHamaCabe();
+
+    @GET("get_kendali_hama_padi.php")
+    Observable<List<TanamanDao>> getHamaPadi();
+    @GET("get_prosedur_cabe.php")
+    Observable<List<TanamanDao>> getProsedurCabe();
+
+    @GET("get_prosedur_padi.php")
+    Observable<List<TanamanDao>> getProsedurPadi();
+
+
 
 
 }

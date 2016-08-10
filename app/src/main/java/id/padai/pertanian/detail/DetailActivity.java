@@ -14,8 +14,9 @@ public class DetailActivity extends GitsActivity<DetailController> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       tanamanDao =(TanamanDao)getIntent().getSerializableExtra(PARAM);
-        mController.callAPI(tanamanDao.getId());
+
+
+        //mController.callAPI(tanamanDao.getId());
     }
 
     @Override
